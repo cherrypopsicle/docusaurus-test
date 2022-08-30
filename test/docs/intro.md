@@ -2,46 +2,137 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting Started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Hello and welcome to our Harbor documentation! It's a pleasure to know that you are joining the ride into our testing haven. Below you will find instructions to get kickstarted with our Harbor CLI.
 
-## Getting Started
+## Harbor CLI
 
-Get started by **creating a new site**.
+### Installing Harbor CLI
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+#### 1. Prerequisites Installation
 
-### What you'll need
+Before we install the Harbor CLI, it's crucial that we have the following pre requisites:
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- [AWS CLI](https://aws.amazon.com/cli/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
 
-## Generate a new site
+#### 2. Harbor CLI installation
 
-Generate a new Docusaurus site using the **classic template**.
+**_NOTE: Before installing the Harbor CLI, make sure your Docker Daemon is running in the background_**
 
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```brew
+brew tap harbor-xyz/homebrew-harbor && brew install harbor
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+#### 3. Run Docker Desktop
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+### Configure your testnet
 
-## Start your site
+To create your Testnet, you'll need to configure harbor and create a config file. Use the command below to set up Harbor with the correct key and generate your first testnet config file. Once you enter the command, the CLI will guide you.
 
-Run the development server:
+#### 1. Copy API Key
+
+After logging in with your newly created Harbor account to the [Harbor WebApp](app.goharbor.com), you should be able to copy your API key in the top right corner where it says `API Key`.
+
+#### 2. Create your config file
+
+Run the command...
 
 ```bash
-cd my-website
-npm run start
+harbor configure
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+.. and follow along the CLI to create test configuration. If you want to bypass the configure command and just run a sample configuration, then here's one:
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```json
+{
+  "config": {
+    "name": "<testname>"
+  },
+  "chains": [
+    {
+      "chain": "ethereum",
+      "config": {
+        "artifactsPath": "./artifacts",
+        "deploy": "./deploy",
+        "environment": {
+          "STAGE": "my-first-env-var"
+        },
+        "afterDeploy": {
+          "location": "./afterDeploy"
+        },
+        "compiler": ""
+      },
+      "smartContracts": [
+        {
+          "fileName": "Greeter.sol",
+          "name": "Greeter"
+        },
+        {
+          "fileName": "Greeter2.sol",
+          "name": "Greeter2"
+        }
+      ]
+    },
+    {
+      "chain": "avalanche",
+      "config": {
+        "artifactsPath": "./artifacts",
+        "deploy": "./deploy",
+        "environment": {
+          "STAGE": "connext-pre-release-avalanche"
+        },
+        "afterDeploy": {
+          "location": "./afterDeploy"
+        },
+        "compiler": ""
+      },
+      "smartContracts": [
+        {
+          "fileName": "Greeter.sol",
+          "name": "Greeter"
+        },
+        {
+          "fileName": "Greeter2.sol",
+          "name": "Greeter2"
+        }
+      ]
+    },
+    {
+      "chain": "polygon",
+      "config": {
+        "artifactsPath": "./artifacts",
+        "deploy": "./deploy",
+        "environment": {
+          "STAGE": "connext-pre-release-polygon"
+        },
+        "afterDeploy": {
+          "location": "./afterDeploy"
+        },
+        "compiler": ""
+      },
+      "smartContracts": [
+        {
+          "fileName": "Greeter.sol",
+          "name": "Greeter"
+        },
+        {
+          "fileName": "Greeter2.sol",
+          "name": "Greeter2"
+        }
+      ]
+    }
+  ],
+  "offChainActors": [
+    {
+      "dockerfile": "./offChain/liquidation-bot-1/Dockerfile",
+      "buildPath": "./offChain/liquidation-bot-1/",
+      "name": "liquidation-bot-1",
+      "port": 3000
+    }
+  ]
+}
+```
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+### Start your testnet
