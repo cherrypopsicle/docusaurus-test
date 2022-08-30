@@ -69,7 +69,7 @@ const config = {
             position: "left",
             label: "Tutorial",
           },
-          { to: "/harbor", label: "Harbor", position: "left" },
+          { to: "https://goharbor.xyz", label: "Harbor", position: "left" },
           { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/facebook/docusaurus",

@@ -136,3 +136,20 @@ harbor configure
 ```
 
 ### Start your testnet
+
+If you’ve successfully configured your JSON file, you should be able to start your first Testnet by setting up the infrastructure using the first command below and then starting the Testnet using the second command.
+
+Make sure you are in the same directory as the config file!
+
+#### 1. Create TestnetImage
+
+```bash
+// Note: Building testnet image might take a minute
+harbor build
+```
+
+#### 2. Starting Testnet
+After the TestnetImage has been successfully created, we can run that Testnet using the following command: 
+```bash
+harbor run <testnet_image_id> --name <unique_testnet_name>
+```
