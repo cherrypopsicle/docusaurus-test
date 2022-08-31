@@ -70,12 +70,7 @@ const config = {
             label: "Tutorial",
           },
           { to: "https://goharbor.xyz", label: "Harbor", position: "left" },
-          { to: "/blog", label: "Blog", position: "left" },
-          {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
-            position: "right",
-          },
+          // { to: "/blog", label: "Blog", position: "left" },
         ],
       },
       footer: {
@@ -94,16 +89,16 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
-              },
-              {
                 label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                href: "https://discord.gg/rU2DVD9w",
               },
               {
                 label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                href: "https://twitter.com/goharborhq",
+              },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/goharbor/8",
               },
             ],
           },
@@ -113,10 +108,6 @@ const config = {
               {
                 label: "Blog",
                 to: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
               },
             ],
           },
